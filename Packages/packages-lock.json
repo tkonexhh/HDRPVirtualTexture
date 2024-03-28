@@ -52,6 +52,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.ide.visualstudio": {
+      "version": "2.0.22",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.test-framework": "1.1.9"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
@@ -80,7 +89,7 @@
       }
     },
     "com.unity.render-pipelines.high-definition": {
-      "version": "file:com.unity.render-pipelines.high-definition",
+      "version": "file:com.unity.render-pipelines.high-definition@16.0.5",
       "depth": 0,
       "source": "embedded",
       "dependencies": {
@@ -98,9 +107,9 @@
       }
     },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "16.0.5",
-      "depth": 1,
-      "source": "builtin",
+      "version": "file:com.unity.render-pipelines.high-definition-config",
+      "depth": 0,
+      "source": "embedded",
       "dependencies": {
         "com.unity.render-pipelines.core": "16.0.5"
       }

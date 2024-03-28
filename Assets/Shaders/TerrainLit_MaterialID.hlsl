@@ -12,12 +12,12 @@ float _FarBlendDistance;
 void TerrainLitShade(float2 uv, float3 positionRWS, inout TerrainLitSurfaceData surfaceData)
 {
     float4 baseMap, maskMap;
-    #if defined(_VIRTUAL_TEXTURE)
+#if defined(_VIRTUAL_TEXTURE)
     float4 vtBaseMap, vtMaskMap;
     SampleVT(positionRWS, vtBaseMap, vtMaskMap);
     baseMap = vtBaseMap;
     maskMap = vtMaskMap;
-    #else
+#else
     float4 slot;
     float2 vertexPosX, vertexPosY, vertexPosZ, vertexPosW;
     float3 positionWS = GetAbsolutePositionWS(positionRWS);
@@ -28,7 +28,7 @@ void TerrainLitShade(float2 uv, float3 positionRWS, inout TerrainLitSurfaceData 
     slot.w = LOAD_TEXTURE2D_LOD(_SplatMap, vertexPosW, 0).r * 255.5;
 
     SampleMaterialID(_BaseMapArray, _MaskMapArray, sampler_linear_repeat_aniso8, positionWS.xz, slot, weight, baseMap, maskMap);
-    #endif
+#endif
     float3 normalTS = UnpackNormalAG(float4(1.0, maskMap.g, 1.0, maskMap.r));
 
     const float4 globalMap = SAMPLE_TEXTURE2D(_GlobalMap, sampler_linear_repeat_aniso8, uv);
@@ -48,7 +48,7 @@ void TerrainLitShade(float2 uv, float3 positionRWS, inout TerrainLitSurfaceData 
 
 void TerrainLitDebug(float2 uv, inout float3 baseColor)
 {
-    #ifdef DEBUG_DISPLAY
+#ifdef DEBUG_DISPLAY
     //baseColor = GetTextureDataDebug(_DebugMipMapMode, uv, _MainTex, _MainTex_TexelSize, _MainTex_MipInfo, baseColor);
-    #endif
+#endif
 }
